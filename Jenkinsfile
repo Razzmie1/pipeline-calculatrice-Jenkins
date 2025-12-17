@@ -44,7 +44,7 @@ pipeline {
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/prog"
-                    sh "rm -rf ${env.BUILD_ID}/sources/build ${env.BUILD_ID}/sources/dist"
+                    sh "docker run --rm -v ${VOLUME} ${IMAGE} sh -c 'rm -rf /src/build /src/dist'"
                 }
             }
         }
